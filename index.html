@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>약수 계산기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>약수 계산기</h1>
+    <input type="number" id="numberInput" placeholder="숫자를 입력하세요" />
+    <button onclick="calculateDivisors()">약수 출력</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        function calculateDivisors() {
+            const number = document.getElementById('numberInput').value;
+            const resultDiv = document.getElementById('result');
+            let divisors = [];
+
+            if (number) {
+                const num = parseInt(number);
+                for (let i = 1; i <= num; i++) {
+                    if (num % i === 0) {
+                        divisors.push(i);
+                    }
+                }
+                resultDiv.innerHTML = `약수: ${divisors.join(', ')}`;
+            } else {
+                resultDiv.innerHTML = '유효한 숫자를 입력하세요.';
+            }
+        }
+    </script>
+</body>
+</html>
